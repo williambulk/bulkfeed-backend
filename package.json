@@ -4,9 +4,9 @@
   "description": "Repository for the back-end of BulkFeed.",
   "type": "module",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch --env-file=.env dist/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/server.js\"",
+    "start": "node dist/server.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +17,14 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongodb": "^6.13.0",
+    "mongoose": "^8.9.6",
+    "nodemon": "^3.1.9",
     "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "@tsconfig/node20": "^20.1.4"
+    "@tsconfig/node20": "^20.1.4",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.0",
+    "tsc-watch": "^6.2.1"
   }
 }
