@@ -1,7 +1,8 @@
 import "dotenv/config";
 import cors from "cors";
 import express from "express";
-import AiNewsRoutes from "./routes/ai-news-routes.js";
+import AiNewsRouter from "./routes/ai-news-routes.js";
+import mongoConnect from "./config/db.js";
 
 const app = express();
 
@@ -16,8 +17,11 @@ app.use(cors(corsOptions));
 // Setting up the JSON middleware
 app.use(express.json());
 
+// Calling MongoDB
+mongoConnect();
+
 // Setting up the routes
-app.use("/ai-news", AiNewsRoutes);
+app.use("/ai-news", AiNewsRouter);
 
 // Setting up the port
 const PORT = process.env.PORT;
