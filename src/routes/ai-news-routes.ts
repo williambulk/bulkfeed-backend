@@ -4,7 +4,7 @@ import {
   getAiNewsById,
   saveAiNews,
   deleteAiNews,
-} from "../controller/AiNewsController.js";
+} from "../controllers/AiNewsController.js";
 
 const AiNewsRouter = express.Router();
 
