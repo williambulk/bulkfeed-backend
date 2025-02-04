@@ -38,7 +38,11 @@ export const saveAiNews = async (req: Request, res: Response): Promise<any> => {
     await newAiNews.save();
     return res.status(201).json(newAiNews);
   } catch (error) {
-    return res.status(500).json({ error: "Failed to save AI News" });
+    console.error("Error saving AI News:", error);
+    return res.status(500).json({
+      error: "Failed to save AI News",
+      details: error,
+    });
   }
 };
 
@@ -58,6 +62,10 @@ export const deleteAiNews = async (
       });
     }
   } catch (error) {
-    return res.status(500).json({ error: "Failed to delete AI news" });
+    console.error("Error deleting AI news", error);
+    return res.status(500).json({
+      error: "Failed to delete AI news",
+      details: error,
+    });
   }
 };
