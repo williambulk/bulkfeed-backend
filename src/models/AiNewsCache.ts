@@ -1,6 +1,17 @@
 import mongoose from "mongoose";
 
-const AiNewsCacheSchema = new mongoose.Schema({
+interface AINews {
+  title: string;
+  excerpt: string;
+  url: string;
+  image: string;
+  source: string;
+  category: string;
+  publishedAt?: Date;
+  createdAt?: Date;
+}
+
+const AiNewsCacheSchema = new mongoose.Schema<AINews>({
   title: {
     type: String,
     required: true,
@@ -26,14 +37,15 @@ const AiNewsCacheSchema = new mongoose.Schema({
   },
   publishedAt: {
     type: Date,
-    required: true,
+    required: false,
   },
   createdAt: {
     type: Date,
     default: Date.now,
+    required: false,
   },
 });
 
-const AiNewsCache = mongoose.model("AiNewsCache", AiNewsCacheSchema);
+const AiNewsCache = mongoose.model<AINews>("ai_news_caches", AiNewsCacheSchema);
 
 export default AiNewsCache;
