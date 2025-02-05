@@ -37,12 +37,12 @@ const AiNewsCacheSchema = new mongoose.Schema<AINews>({
   },
   publishedAt: {
     type: Date,
-    required: false,
+    required: true,
   },
   createdAt: {
     type: Date,
     default: Date.now,
-    required: false,
+    required: true,
   },
 });
 
