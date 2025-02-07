@@ -46,6 +46,9 @@ const AiNewsCacheSchema = new mongoose.Schema<AINews>({
   },
 });
 
-const AiNewsCache = mongoose.model<AINews>("ai_news_caches", AiNewsCacheSchema);
+const AiNewsCacheModel = mongoose.model<AINews>(
+  "ai_news_caches",
+  AiNewsCacheSchema
+);
 
-export default AiNewsCache;
+export default AiNewsCacheModel;
