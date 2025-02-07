@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import AiNewsCache from "../models/AiNewsCache.js";
+import AiNewsCacheModel from "../models/AiNewsCache.js";
 
 // Getting all the AI News
 export const getAiNews = async (req: Request, res: Response): Promise<any> => {
   try {
-    const news = await AiNewsCache.find();
+    const news = await AiNewsCacheModel.find();
     return res.status(200).json(news);
   } catch (error) {
     return res.status(500).json({ error: "Failed to fetch AI News" });
@@ -17,7 +17,7 @@ export const getAiNewsById = async (
   res: Response
 ): Promise<any> => {
   try {
-    const news = await AiNewsCache.findById(req.params.id);
+    const news = await AiNewsCacheModel.findById(req.params.id);
 
     if (news) {
       return res.status(200).json(news);
@@ -34,7 +34,7 @@ export const getAiNewsById = async (
 // Saving AI News
 export const saveAiNews = async (req: Request, res: Response): Promise<any> => {
   try {
-    const newAiNews = new AiNewsCache(req.body);
+    const newAiNews = new AiNewsCacheModel(req.body);
     await newAiNews.save();
     return res.status(201).json(newAiNews);
   } catch (error) {
@@ -52,7 +52,7 @@ export const deleteAiNews = async (
   res: Response
 ): Promise<any> => {
   try {
-    const deletedNews = await AiNewsCache.findByIdAndDelete(req.params.id);
+    const deletedNews = await AiNewsCacheModel.findByIdAndDelete(req.params.id);
 
     if (deletedNews) {
       return res.status(200).json({ message: "AI News deleted sucessfully" });
