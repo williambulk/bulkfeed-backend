@@ -4,9 +4,10 @@
   "description": "Repository for the back-end of BulkFeed.",
   "type": "module",
   "scripts": {
-    "dev": "tsc-watch --noClear -p ./tsconfig.json --onSuccess \"node ./dist/server.js\"",
-    "start": "node dist/server.js",
-    "build": "tsc"
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "dev": "npm run build && nodemon dist/server.js",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -14,18 +15,19 @@
   "dependencies": {
     "@google/generative-ai": "^0.21.0",
     "cors": "^2.8.5",
-    "dotenv": "^16.4.7",
+    "dotenv": "^16.6.1",
     "express": "^4.21.2",
     "mongodb": "^6.13.0",
-    "mongoose": "^8.9.6",
-    "nodemon": "^3.1.9",
-    "typescript": "^5.7.3"
+    "mongoose": "^8.9.6"
   },
   "devDependencies": {
+    "typescript": "^5.7.3",
     "@tsconfig/node20": "^20.1.4",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.13.0",
-    "tsc-watch": "^6.2.1"
+    "nodemon": "^3.1.9",
+    "tsc-watch": "^6.2.1",
+    "rimraf": "^6.0.1"
   }
 }
